@@ -1,24 +1,32 @@
 <?php
-session_start();
-if(isset($_POST['submit']))
-{
-	$password = $_POST['pass'];
-	$cpassword = $_POST['cpass'];
-	$uemail = $_POST['email'];
-		if(empty($password) == true || empty($cpassword) == true){
-			echo "null submission!";
-		}else{
-			if($password == $cpassword){
-				
-				$_SESSION['pass'] = $password;
-				$_SESSION['cpass'] = $cpassword;
-				$_SESSION['email'] = $uemail;
-				header('location: login.php');
-			}else{
-				echo "invalid password";
+	
+	require_once('../database/databaseFunctions.php');
+
+	if(isset($_POST['submit'])){
+
+        $name = $_POST['name'];
+		$username = $_POST['uname'];
+		$password = $_POST['pass'];
+		$email = $_POST['email'];
+		$cpassword = $_POST['cpass'];
+		$number = $_POST['number'];
+
+if(empty($name)==true || empty($username)==true ||  empty($email)==true ||  empty($password)==true || empty($number)==true  )
+	{echo "null submition";}
+else{
+			$status = register($name, $username, $email, $number, $password );
+
+			if($status){
+
+				header('location: ../views/login.php');
+			}
+			else
+			{
+				header('location: ../views/registration.php');
 			}
 		}
-	}else{
-		header('location: registration.php');
-	}
+}
+	
+
+
 ?>

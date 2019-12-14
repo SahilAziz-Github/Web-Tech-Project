@@ -1,7 +1,8 @@
 <?php
 
 	function getConnection(){
-		$conn = mysqli_connect('localhost', 'root', '', 'transportSystem');
+		$conn = mysqli_connect('localhost', 'root', '', 'transportsystem');
 		return $conn;
 	}
 ?>
+
