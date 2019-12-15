@@ -21,7 +21,7 @@
 
 			if(namev==" " || unamev==" "  || emailv==" "  || numv==" "  || passv==" "  || cpassv==" " )
 			{
-				alert("Invalid Submition!");
+				alert("Please Fill Up the Fields!");
 				return false;
 			}
 
@@ -95,7 +95,8 @@ Confirm Password <br>
 <input type="Password" name="cpass" size = "8" maxlength="8" /> 
 <span id="validCpass">  </span> <br>
 <hr>
-<input type="submit" name="submit" value="Sign Up" onclick ="return regvalidation()"/> 
+<input type="submit" name="submit" value="Sign Up" onclick ="return regvalidation()"/>
+<a href="../views/login.php"> Sign in </a> 
 
 
 </fieldset>
