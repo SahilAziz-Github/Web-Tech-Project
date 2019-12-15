@@ -2,7 +2,10 @@
 
 	function getConnection(){
 		$conn = mysqli_connect('localhost', 'root', '', 'transportsystem');
-		return $conn;
+		if(!$conn)
+			{echo "not connected to database.";}
+		else{
+		return $conn;}
 	}
 ?>
 
