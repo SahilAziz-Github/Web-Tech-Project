@@ -1,21 +1,25 @@
 <?php
-session_start();
-if(isset($_POST['submit']))
-{
-	$uname = $_POST['name'];
-	$password = $_POST['pass'];
+	session_start();
+	require_once('../database/databaseFunctions.php');
 	
-		if(empty($uname) == true || empty($password) == true){
+	if(isset($_POST['submit'])){
+		$email = $_POST['email'];
+		$password = $_POST['pass'];
+		if(empty($email) == true || empty($password) == true){
 			echo "null submission!";
 		}else{
-			if($uname == $password){
+			$count = validate($email, $password);
+			if($count > 0){
 				
-				$_SESSION['name'] = $uname;
+				$_SESSION['email'] = $email;
 				$_SESSION['password'] = $password;
-				header('location: userView.php');
+				//setcookie("username", $uname, time()+3600, "/");
+				header('location: ../views/home.php');
 			}else{
-				echo "invalid user name/password";
+				alert("invalid email/password") ;
 			}
 		}
+	}else{
+		header('location: ../views/login.php');
 	}
 ?>
